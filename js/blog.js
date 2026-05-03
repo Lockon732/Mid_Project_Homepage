@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
         var btn = body.nextElementSibling;
         if (!btn || !btn.classList.contains('btn-read')) return;
 
-        // Cek tinggi penuh (setelah gambar loading)
+        /* Ukur tinggi penuh */
         var fullHeight = body.scrollHeight;
 
         if (fullHeight > 260) {
@@ -22,7 +22,6 @@ window.addEventListener('load', function () {
         btn.addEventListener('click', function () {
             var collapsed = body.classList.contains('collapsed');
             if (collapsed) {
-                // Kalkulasi ulang scrollHeight saat dibuka untuk menghindari terpotong
                 body.style.maxHeight = body.scrollHeight + 'px';
                 body.classList.remove('collapsed');
                 btn.textContent = 'Tutup artikel';

@@ -99,10 +99,58 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!ok) return;
 
-        /* Sukses */
-        showToast('Pesan berhasil dikirim!');
-        form.reset();
-        [namaInput, emailInput, pesanInput].forEach(clearState);
+        // Ambil elemen tombol untuk memberikan state loading
+        var btnSubmit = form.querySelector('.btn-send');
+        var originalBtnText = btnSubmit ? btnSubmit.textContent : 'Kirim Pesan';
+
+        if (btnSubmit) {
+            btnSubmit.textContent = 'Mengirim...';
+            btnSubmit.disabled = true;
+            btnSubmit.style.opacity = '0.7';
+            btnSubmit.style.cursor = 'wait';
+        }
+
+        // Siapkan data untuk dikirim ke Formspree
+        var formData = new FormData(form);
+
+        fetch("https://formspree.io/f/mdababkp", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    // Sukses
+                    showToast('Pesan berhasil dikirim!');
+                    form.reset();
+                    [namaInput, emailInput, pesanInput].forEach(clearState);
+                } else {
+                    // Tangani error dari Formspree
+                    response.json().then(function (data) {
+                        if (Object.hasOwn(data, 'errors')) {
+                            showToast(data["errors"].map(function (error) { return error["message"] }).join(", "));
+                        } else {
+                            showToast('Oops! Ada masalah saat mengirim pesan.');
+                        }
+                    }).catch(function () {
+                        showToast('Oops! Ada masalah saat mengirim pesan.');
+                    });
+                }
+            })
+            .catch(function (error) {
+                showToast('Oops! Terjadi kesalahan koneksi jaringan.');
+            })
+            .finally(function () {
+                // Kembalikan state tombol ke semula
+                if (btnSubmit) {
+                    btnSubmit.textContent = originalBtnText;
+                    btnSubmit.disabled = false;
+                    btnSubmit.style.opacity = '1';
+                    btnSubmit.style.cursor = 'pointer';
+                }
+            });
     });
 
     // Toast notification
