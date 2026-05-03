@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeri proyek Teo — Market Screener, Habit Tracker, dan Autostepper bot.">
+    <title>Teo — Galeri</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Teo.</a>
+            <button class="hamburger" aria-label="Buka menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gallery.html" class="on">Galeri</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-title">
+            <h1>Galeri Proyek</h1>
+            <p>Tiga proyek utama yang paling aktif dikembangkan — dari kebutuhan praktis maupun passion.</p>
+        </section>
+
+        <!-- Project list -->
+        <section class="wrap reveal">
+            <div class="projects">
+
+                <!-- Market Screener -->
+                <div class="project-card">
+                    <div class="project-img-box"
+                         data-lightbox="../assets/img_market_screener.png"
+                         data-caption="Market Screener Bot — Indodax">
+                        <img src="../assets/img_market_screener.png"
+                             alt="Screenshot Telegram Bot Market Screener">
+                        <span class="zoom-hint">Klik untuk memperbesar</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-eyebrow">Python · CCXT · SQLite</p>
+                        <h2>Market Screener Bot — Indodax</h2>
+                        <p>
+                            Bot yang memindai pasar kripto Indodax secara real-time, fokus pada pair
+                            berlikuiditas rendah untuk mendeteksi anomali volume dan pergerakan agresif
+                            (Pump, Dump, atau akumulasi paus).
+                        </p>
+                        <p class="project-feature-label">Fitur utama:</p>
+                        <ul>
+                            <li>Scan otomatis seluruh pair IDR dengan Liquidity Filter</li>
+                            <li>Klasifikasi ukuran transaksi (Shrimp hingga Leviathan)</li>
+                            <li>Global Price Gap Analysis — deteksi arbitrase dan maintenance trap</li>
+                            <li>Log real-time ke SQLite (WAL Mode) untuk dataset AI</li>
+                        </ul>
+                        <div class="tags-row">
+                            <span class="tag">Python</span>
+                            <span class="tag">CCXT</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">Telegram Bot API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Habit Tracker -->
+                <div class="project-card reverse">
+                    <div class="project-body">
+                        <p class="project-eyebrow">Android · Java · SQLite</p>
+                        <h2>Habit Tracker</h2>
+                        <p>
+                            Aplikasi Android dari tugas mata kuliah Rekayasa Perangkat Lunak (RPL).
+                            Dirancang untuk memantau rutinitas harian dengan kalender bulanan yang
+                            warnanya beradaptasi sesuai persentase konsistensi pengguna.
+                        </p>
+                        <p class="project-feature-label">Fitur utama:</p>
+                        <ol>
+                            <li>Manajemen rutinitas CRUD lengkap dengan kustomisasi ikon/emoji.</li>
+                            <li>Kalender bulanan — indikator warna berbasis progres harian.</li>
+                            <li>Streak counter spesifik per rutinitas.</li>
+                            <li>Ringkasan statistik harian (target, pencapaian, persentase).</li>
+                        </ol>
+                        <div class="tags-row">
+                            <span class="tag">Android</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">Software Engineering</span>
+                        </div>
+                    </div>
+                    <div class="project-img-box"
+                         data-lightbox="../assets/img_habit_tracker.jpg"
+                         data-caption="Habit Tracker — Android App">
+                        <img src="../assets/img_habit_tracker.jpg"
+                             alt="Screenshot Habit Tracker App">
+                        <span class="zoom-hint">Klik untuk memperbesar</span>
+                    </div>
+                </div>
+
+                <!-- Autostepper -->
+                <div class="project-card">
+                    <div class="project-img-box"
+                         data-lightbox="../assets/img_autostepper.png"
+                         data-caption="Autostepper — Vision-Based Game Bot">
+                        <img src="../assets/img_autostepper.png"
+                             alt="Screenshot Autostepper Bot di VS Code">
+                        <span class="zoom-hint">Klik untuk memperbesar</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-eyebrow">Python · Computer Vision · Desktop Automation</p>
+                        <h2>Autostepper — Vision-Based Game Bot</h2>
+                        <p>
+                            Bot automasi berbasis computer vision untuk mengoperasikan game browser
+                            secara otonom menggunakan PyAutoGUI. Klik disimulasikan dengan gerakan
+                            kursor menyerupai manusia menggunakan easing function.
+                        </p>
+                        <p class="project-feature-label">Fitur utama:</p>
+                        <ol>
+                            <li>Template matching dengan confidence threshold 0.80–0.90.</li>
+                            <li>Humanized click dengan randomisasi posisi dan durasi.</li>
+                            <li>Dual-mode: Stepping (eksplorasi) dan Arena Grind (farming otomatis).</li>
+                            <li>Deteksi CAPTCHA + notifikasi Discord via Webhook.</li>
+                        </ol>
+                        <div class="tags-row">
+                            <span class="tag">Python</span>
+                            <span class="tag">PyAutoGUI</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Discord Webhook</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="section-divider" style="max-width:1000px;margin:0 auto;">
+
+        <!-- Detail Cards -->
+        <section class="wrap reveal">
+            <p class="section-label">Deep Dive</p>
+            <h3 class="section-heading">Detail Teknis</h3>
+            <div class="detail-grid">
+                <div class="card">
+                    <h4>Market Screener Logic</h4>
+                    <h5>Python dan CCXT</h5>
+                    <p>
+                        Mengukur lonjakan Volume Delta dan Buy Pressure, lalu membandingkan harga lokal
+                        Indodax dengan pasar global via CCXT. Celah harga &gt;15% dilabelkan "TRAP".
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>Streak Counter</h4>
+                    <h5>Habit Tracker</h5>
+                    <p>
+                        Logika sekuensial — sistem mengecek apakah rutinitas hari sebelumnya selesai.
+                        Streak bertambah satu jika ya, reset ke nol jika tidak. Data tersimpan di SQLite.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>Vision Pipeline</h4>
+                    <h5>Autostepper</h5>
+                    <p>
+                        Setiap loop, bot memindai layar via template matching PyAutoGUI + OpenCV.
+                        Elemen yang terdeteksi diklik dengan koordinat acak untuk simulasi perilaku manusia.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider" style="max-width:1000px;margin:0 auto;">
+
+        <!-- Tech Stack Table -->
+        <section class="wrap reveal">
+            <p class="section-label">Teknologi</p>
+            <h3 class="section-heading">Tech Stack</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proyek</th>
+                            <th>Bahasa</th>
+                            <th>Platform</th>
+                            <th>Tools / Library</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Market Screener</strong></td>
+                            <td>Python</td>
+                            <td>Telegram / Indodax</td>
+                            <td>SQLite, CCXT, Pandas, Requests</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Habit Tracker</strong></td>
+                            <td>Java</td>
+                            <td>Android</td>
+                            <td>SQLite, Material Design</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Autostepper</strong></td>
+                            <td>Python</td>
+                            <td>Windows (Desktop)</td>
+                            <td>PyAutoGUI, Keyboard, Discord Webhook</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Timmothea E. O. Landeng</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Preview gambar">
+        <button id="lb-close" aria-label="Tutup">&times;</button>
+        <img id="lb-img" src="" alt="">
+        <p id="lb-caption"></p>
+    </div>
+
+    <button id="scrollTopBtn" aria-label="Kembali ke atas">&#8593;</button>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/gallery.js"></script>
+</body>
+</html>

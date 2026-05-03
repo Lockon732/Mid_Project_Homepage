@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Teo — Artikel seputar automasi, data engineering, dan esports analytics.">
+    <title>Teo — Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Teo.</a>
+            <button class="hamburger" aria-label="Buka menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gallery.html">Galeri</a></li>
+                <li><a href="blog.html" class="on">Blog</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-title">
+            <h1>Blog dan Eksplorasi</h1>
+            <p>Catatan eksperimen teknis, analisis data, dan observasi pribadi.</p>
+        </section>
+
+        <section class="wrap">
+            <div class="blog-list">
+
+                <!-- Artikel 1 -->
+                <article class="article-card reveal">
+                    <p class="post-meta">Computer Vision &middot; 24 Mar 2026</p>
+                    <h2>Tantangan Membangun Bot Vision-Based menggunakan PyAutoGUI</h2>
+                    <div class="article-body">
+                        <img class="article-img" src="../assets/SimpleMMO.png" alt="Screenshot game SimpleMMO — konteks artikel bot vision-based">
+                        <p>
+                            Dalam pengembangan proyek <em>Autostepper</em>, salah satu kendala terbesar adalah memastikan
+                            tingkat akurasi pemindaian layar (<em>screen parsing</em>). Bot berbasis computer vision
+                            harus murni mengandalkan template matching dan analisis piksel — berbeda dengan injeksi
+                            memori atau intersepsi paket jaringan.
+                        </p>
+
+                        <h3>1. Anomali Subpixel Anti-Aliasing (ClearType)</h3>
+                        <p>
+                            Bot gagal mengenali tombol antarmuka yang tampak identik secara kasat mata. Setelah
+                            membedah piksel tangkapan layar, saya menemukan bahwa teks "putih" sebenarnya tidak murni
+                            putih. Sistem operasi menggunakan Subpixel Anti-Aliasing untuk memperhalus ujung teks,
+                            menghasilkan pinggiran seperti <code>(232, 200, 162)</code> (persik) atau
+                            <code>(178, 210, 238)</code> (biru muda).
+                        </p>
+                        <p>
+                            Solusinya elegan: menyuntikkan parameter <code>grayscale=True</code> ke modul penglihatan
+                            bot. Ini melucuti semua data warna dan memaksa bot hanya mengevaluasi bentuk hitam-putih,
+                            menetralisir efek anti-aliasing sepenuhnya.
+                        </p>
+
+                        <h3>2. Inkonsistensi UI dan CSS :hover State</h3>
+                        <p>
+                            Pengembang web sering menggunakan pseudo-class <code>:hover</code> pada CSS. Saat kursor
+                            berada di atas tombol, warnanya berubah terang — namun karena bot memindahkan kursor
+                            menjauh saat jeda, ia selalu melihat tombol dalam <em>resting state</em> yang gelap.
+                            Akibatnya, bot keliru mengklik elemen yang sudah habis karena warnanya serupa.
+                        </p>
+
+                        <h3>3. Rekayasa "Luminosity Scanner"</h3>
+                        <p>
+                            Daripada mencari kode RGB tertentu, saya merancang Luminosity Scanner yang memindai garis
+                            horizontal melintasi tengah tombol untuk mencari piksel dengan kecerahan tertinggi.
+                            Dengan ambang batas 160, bot kini dapat mengabaikan tombol mati dan mengekstraksi sumber
+                            daya dengan akurasi 100%.
+                        </p>
+
+                        <h3>4. Manajemen State dan "Dead Reckoning"</h3>
+                        <p>
+                            Memindai UI terus-menerus sangat tidak efisien. Karena setiap poin energi membutuhkan
+                            5 menit untuk beregenerasi, saya mengimplementasikan Dead Reckoning: ketika energi habis,
+                            bot menyetel kronometer internal 80 menit, lalu secara otonom beralih ke mode arena
+                            tepat saat waktu habis.
+                        </p>
+
+                        <h3>Kesimpulan</h3>
+                        <p>
+                            Membangun bot bukan sekadar merekam klik mouse. Ini tentang membangun State Machine
+                            yang tangguh. Dengan arsitektur Object-Oriented yang mendefinisikan
+                            <code>BotState</code> dan kelas <code>Config</code> sentral, proyek ini berevolusi
+                            dari skrip sederhana menjadi entitas automasi yang sepenuhnya mandiri.
+                        </p>
+                    </div>
+                    <button class="btn-read">Baca selengkapnya</button>
+                </article>
+
+                <!-- Artikel 2 -->
+                <article class="article-card reveal">
+                    <p class="post-meta">Esports Analytics &middot; 28 Mar 2026</p>
+                    <h2>Pergeseran Paradigma Menuju Mythical Immortal: Mengapa Draft Memegang 60% Kemenangan</h2>
+                    <div class="article-body">
+                        <img class="article-img" src="../assets/Immortal.jpg" alt="Screenshot rank Mythical Immortal">
+                        <p>
+                            Setelah menembus 100 bintang dan mengamankan rank <strong>Mythical Immortal</strong>
+                            dengan win rate 62.5% dalam 272 pertandingan, sebuah realitas sistematis menjadi
+                            sangat jelas. Sistem kompetitif di tingkat ini — dihuni kurang dari 1% total pemain —
+                            beroperasi dengan aturan main yang sama sekali berbeda.
+                        </p>
+
+                        <h3>1. Supremasi Mikro di Bawah Immortal</h3>
+                        <p>
+                            Di rank bawah hingga awal Mythic, dominasi sangat ditentukan kemampuan Mikro Hero.
+                            Penguasaan mekanik superior — kecepatan tangan, akurasi, refleks — bisa membawa tim
+                            menang secara sepihak. Namun memasuki Immortal, mekanik tinggi berhenti menjadi
+                            senjata rahasia dan berubah menjadi spesifikasi standar.
+                        </p>
+
+                        <h3>2. Evolusi Makro di Immortal</h3>
+                        <p>
+                            Pemisah utama antara Immortal dan Honor/Glory adalah pemahaman Makro yang presisi.
+                        </p>
+                        <ul>
+                            <li><strong>Rotasi dan Prioritas Objektif:</strong> Kapan berotasi, kapan mengamankan
+                                atau merelakan Turtle, Lord, dan Turret.</li>
+                            <li><strong>Kontrol Peta:</strong> Manajemen tempo gelombang minion (slow push vs
+                                hard push) untuk menciptakan tekanan ekonomi.</li>
+                        </ul>
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Faktor Kemenangan</th>
+                                        <th>Dampak thd Win Rate</th>
+                                        <th>Fokus Utama</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Draft Pick dan Komposisi</td>
+                                        <td>~60%</td>
+                                        <td>Sinergi hero dan Counter-pick</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Makro dan Map Awareness</td>
+                                        <td>~25%</td>
+                                        <td>Rotasi dan Prioritas Objektif</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mikro dan Mekanik Motorik</td>
+                                        <td>~15%</td>
+                                        <td>Eksekusi combo dan Waktu respons</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Kesimpulan</h3>
+                        <p>
+                            Mythical Immortal bukan etalase kecepatan jari. Ini ruang lingkup seorang arsitek
+                            sistem — kemenangan divalidasi oleh eksekusi draft superior (60%), penguasaan makro
+                            yang disiplin, dan mikro hanya sebagai piranti pelengkap.
+                        </p>
+                    </div>
+                    <button class="btn-read">Baca selengkapnya</button>
+                </article>
+
+                <!-- Artikel 3 -->
+                <article class="article-card reveal">
+                    <p class="post-meta">Automasi dan Data Engineering &middot; 28 Mar 2026</p>
+                    <h2>Evolusi Bot Indodax: Mengatasi "Maintenance Trap" dan Migrasi SQLite</h2>
+                    <div class="article-body">
+                        <img class="article-img" src="../assets/Start_Bot.png" alt="Screenshot tampilan terminal saat menjalankan Market Screener Bot">
+                        <p>
+                            Mengembangkan Market Screener untuk Indodax jauh lebih menantang dari sekadar
+                            membaca orderbook. Bot ini kini di versi V11.0 — berevolusi dari skrip pemantau
+                            sederhana menjadi sistem berkecepatan tinggi yang ditenagai Global Oracle dan
+                            Database Engine.
+                        </p>
+
+                        <h3>1. Jebakan "Maintenance Trap"</h3>
+                        <p>
+                            Sering terjadi anomali di mana harga koin tiba-tiba melonjak secara tidak wajar.
+                            Ini adalah jebakan ilusi likuiditas — bursa sedang maintenance, menutup akses
+                            deposit, membuat pasokan lokal langka padahal harga globalnya diam di tempat.
+                        </p>
+                        <p>
+                            Saya mengintegrasikan modul Global Oracle menggunakan library CCXT. Bot mengecek
+                            harga wajar di Binance, Gate.io, dan MEXC. Jika harga lokal melonjak lebih dari
+                            15% di atas harga global, bot memblokir sinyal buy dan melabelinya "TRAP".
+                            Jika terdiskon di bawah -3%, ditangkap sebagai peluang arbitrase "DISC".
+                        </p>
+
+                        <h3>2. Anomali API dan Koin "Meme"</h3>
+                        <p>
+                            Beberapa token baru (seperti TROLLSOL) terkadang gagal ditarik sistem pembaruan
+                            otomatis sehingga bot mengklasifikasikannya sebagai koin lokal. Solusinya:
+                            injeksi manual ke struktur Whitelist untuk memastikan perhitungan price gap
+                            tetap akurat tanpa bergantung sepenuhnya pada respons API.
+                        </p>
+
+                        <h3>3. Perombakan Total: Dari CSV ke SQLite</h3>
+                        <p>
+                            Pada versi awal, bot mencatat seluruh metrik pasar ke file CSV. Ketika dataset
+                            membengkak melewati 60.000 baris, metode ini memicu latency dan risiko memory
+                            leak. Solusinya adalah migrasi ke SQLite dengan Write-Ahead Logging (WAL) —
+                            bot V11.0 kini mampu menyimpan jutaan data real-time dengan kecepatan tinggi.
+                            Dataset ini yang kelak menjadi fondasi pelatihan model Machine Learning.
+                        </p>
+                    </div>
+                    <button class="btn-read">Baca selengkapnya</button>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Timmothea E. O. Landeng</p>
+    </footer>
+
+    <button id="scrollTopBtn" aria-label="Kembali ke atas">&#8593;</button>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/blog.js"></script>
+</body>
+</html>

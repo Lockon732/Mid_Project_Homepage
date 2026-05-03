@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontak Teo — formulir kontak, sosial media, dan informasi.">
+    <title>Teo — Kontak</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Teo.</a>
+            <button class="hamburger" aria-label="Buka menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gallery.html">Galeri</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html" class="on">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-title">
+            <h1>Kontak</h1>
+            <p>Untuk diskusi proyek, kolaborasi, atau pertanyaan teknis — silakan hubungi saya.</p>
+        </section>
+
+        <section class="wrap">
+            <div class="contact-grid">
+
+                <!-- Form -->
+                <div class="form-card reveal">
+                    <p class="section-label" style="margin-bottom:0.75rem;">Kirim Pesan</p>
+                    <h2>Formulir Kontak</h2>
+                    <p class="form-desc">Saya akan merespons dalam 1–2 hari kerja.</p>
+
+                    <form id="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="field">
+                                <label for="nama">Nama <span class="req">*</span></label>
+                                <input type="text" id="nama" name="nama" placeholder="Nama Anda" required>
+                                <p class="field-err" id="nama-err" hidden></p>
+                            </div>
+                            <div class="field">
+                                <label for="email">Email <span class="req">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="email@contoh.com" required>
+                                <p class="field-err" id="email-err" hidden></p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="subjek">Subjek</label>
+                            <select id="subjek" name="subjek">
+                                <option value="" disabled selected>Pilih topik</option>
+                                <option value="kolaborasi">Kolaborasi proyek</option>
+                                <option value="tanya">Pertanyaan teknis</option>
+                                <option value="freelance">Freelance</option>
+                                <option value="lain">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="pesan">Pesan <span class="req">*</span></label>
+                            <textarea id="pesan" name="pesan" placeholder="Tulis pesan di sini..." required></textarea>
+                            <p class="field-err" id="pesan-err" hidden></p>
+                        </div>
+
+                        <button type="submit" class="btn-send">Kirim Pesan</button>
+                    </form>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+
+                    <div class="side-card reveal">
+                        <h3>Sosial Media</h3>
+                        <h5>Channel komunikasi alternatif</h5>
+                        <ul class="socials">
+                            <li>
+                                <a href="https://github.com/Lockon732" target="_blank" rel="noopener">
+                                    <img class="social-icon" src="../assets/logo_github.png" alt="GitHub">
+                                    GitHub @Lockon732
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com/exor7777" target="_blank" rel="noopener">
+                                    <img class="social-icon" src="../assets/logo_instagram.png" alt="Instagram">
+                                    Instagram @exor7777
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:timmothealandeng026@student.unsrat.ac.id">
+                                    <span class="social-icon">@</span>
+                                    timmothealandeng026@student.unsrat.ac.id
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="side-card reveal">
+                        <h3>Info</h3>
+                        <h5>Detail kontak</h5>
+                        <ul class="info-list">
+                            <li>
+                                <span class="info-label">Lokasi</span>
+                                <span class="info-val">Manado, Indonesia</span>
+                            </li>
+                            <li>
+                                <span class="info-label">Status</span>
+                                <span class="info-val">Mahasiswa aktif</span>
+                            </li>
+                            <li>
+                                <span class="info-label">Freelance</span>
+                                <span class="info-val">Terbuka</span>
+                            </li>
+                            <li>
+                                <span class="info-label">Timezone</span>
+                                <span class="info-val">GMT+8 (WITA)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="side-card reveal">
+                        <h3>Estimasi Waktu Balas</h3>
+                        <h5>Per platform</h5>
+                        <div class="table-wrap" style="border-radius:var(--radius);">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Platform</th>
+                                        <th>Biasanya</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>1–2 hari</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Instagram DM</td>
+                                        <td>Sehari</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Timmothea E. O. Landeng</p>
+    </footer>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <button id="scrollTopBtn" aria-label="Kembali ke atas">&#8593;</button>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/contact.js"></script>
+</body>
+</html>
