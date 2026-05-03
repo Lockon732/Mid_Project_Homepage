@@ -1,15 +1,14 @@
 // Read more / collapse artikel
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
 
     document.querySelectorAll('.article-body').forEach(function (body) {
         var btn = body.nextElementSibling;
         if (!btn || !btn.classList.contains('btn-read')) return;
 
-        /* Ukur tinggi penuh */
+        // Cek tinggi penuh (setelah gambar loading)
         var fullHeight = body.scrollHeight;
 
-        /* Collapse awal jika konten panjang */
         if (fullHeight > 260) {
             body.style.maxHeight = '220px';
             body.style.overflow = 'hidden';
@@ -23,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', function () {
             var collapsed = body.classList.contains('collapsed');
             if (collapsed) {
-                body.style.maxHeight = fullHeight + 'px';
+                // Kalkulasi ulang scrollHeight saat dibuka untuk menghindari terpotong
+                body.style.maxHeight = body.scrollHeight + 'px';
                 body.classList.remove('collapsed');
                 btn.textContent = 'Tutup artikel';
             } else {
